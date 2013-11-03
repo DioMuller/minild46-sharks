@@ -6,10 +6,15 @@ public class PlayerBehavior : MonoBehaviour
     private SwimingBehavior swimming;
     public KeyCode next;
 
+    private float buttonX;
+    private float buttonY;
+
 	// Use this for initialization
 	void Start () 
     {
         next = NextKey();
+        buttonX = Screen.width / 2 - 30;
+        buttonY = Screen.height / 2 - 30;
 	    swimming = transform.GetComponent<SwimingBehavior>();
 	}
 	
@@ -18,28 +23,37 @@ public class PlayerBehavior : MonoBehaviour
     {
 	    if( Input.GetKey(next) ) 
         {
-            KeyCode temp = NextKey();
-
-            swimming.speed += (1.5f * swimming.decay);
-
-            if( swimming.speed > 25f ) swimming.speed = 25f;
-
-            while( temp == next ) temp = NextKey();
-
-            next = temp;
+            AddSpeed();
         }  
 	}
 
     void OnGUI()
     {
         GUI.skin.label.alignment = TextAnchor.MiddleCenter;
-        Rect position = new Rect(Screen.width / 2 - 30, Screen.height/ 2 - 30, 30, 30);
-        GUI.Box( position, "" );
-        GUI.Label( position, ((char) next).ToString().ToUpper()); 
+        Rect position = new Rect(buttonX, buttonY, 30, 30);
+        if( GUI.Button( position, ((char) next).ToString().ToUpper()) )
+        {
+            AddSpeed();
+        }
     }
 
     KeyCode NextKey()
     {
         return (KeyCode)(Random.Range(0, 26) + 'a');
+    }
+
+    void AddSpeed()
+    {
+        KeyCode temp = NextKey();
+
+        swimming.speed += (1.5f * swimming.decay);
+
+        if (swimming.speed > 25f) swimming.speed = 25f;
+
+        while (temp == next) temp = NextKey();
+
+        next = temp;
+        buttonX = Random.Range(100, Screen.width - 100);
+        buttonY = Random.Range(100, Screen.height - 100);
     }
 }
