@@ -39,7 +39,7 @@ public class SwimingBehavior : MonoBehaviour
 	/// </summary>
 	void Update () 
     {
-	    if( speed > -10f ) 
+	    if( speed > -20f ) 
         {
             speed -= (decay * Time.deltaTime);
         }
