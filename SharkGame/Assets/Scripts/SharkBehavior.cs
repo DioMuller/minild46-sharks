@@ -8,6 +8,8 @@ public class SharkBehavior : MonoBehaviour
     /// Blood particle.
     /// </summary>
     public Transform bloodParticle;
+
+    public string nextLevel;
     #endregion Inspector Variables
 
     #region Private Attributes
@@ -50,5 +52,6 @@ public class SharkBehavior : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         Destroy(other.gameObject);
+        Application.LoadLevel(nextLevel);
     }
 }

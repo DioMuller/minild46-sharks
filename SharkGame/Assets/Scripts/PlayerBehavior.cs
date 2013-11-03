@@ -5,9 +5,14 @@ public class PlayerBehavior : MonoBehaviour
 {
     private SwimingBehavior swimming;
     public KeyCode next;
+    public float winPosition;
 
     private float buttonX;
     private float buttonY;
+
+    public string nextLevel;
+
+    public bool showGUI = true;
 
 	// Use this for initialization
 	void Start () 
@@ -25,15 +30,23 @@ public class PlayerBehavior : MonoBehaviour
         {
             AddSpeed();
         }  
+
+        if( transform.position.x > winPosition )
+        {
+            Application.LoadLevel(nextLevel);
+        }
 	}
 
     void OnGUI()
     {
-        GUI.skin.label.alignment = TextAnchor.MiddleCenter;
-        Rect position = new Rect(buttonX, buttonY, 30, 30);
-        if( GUI.Button( position, ((char) next).ToString().ToUpper()) )
+        if( showGUI )
         {
-            AddSpeed();
+            GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+            Rect position = new Rect(buttonX, buttonY, 30, 30);
+            if( GUI.Button( position, ((char) next).ToString().ToUpper()) )
+            {
+                AddSpeed();
+            }
         }
     }
 
