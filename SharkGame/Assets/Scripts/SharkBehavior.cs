@@ -3,9 +3,19 @@ using System.Collections;
 
 public class SharkBehavior : MonoBehaviour
 {
+    #region Inspector Variables
+    /// <summary>
+    /// Blood particle.
+    /// </summary>
     public Transform bloodParticle;
+    #endregion Inspector Variables
 
+    #region Private Attributes
+    /// <summary>
+    /// Has the coroutine started?
+    /// </summary>
     private bool coroutineStarted = false;
+    #endregion Private Attributes
 
     /// <summary>
     /// Called when the shark collides with other objects.

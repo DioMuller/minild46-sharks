@@ -3,16 +3,31 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour 
 {
+    #region Inspector Variables
+    #endregion Inspector Variables
 
-	// Use this for initialization
+    #region Properties
+    #endregion Properties
+    
+	/// <summary>
+    /// Use this for initialization
+	/// </summary>
 	void Start () 
     {
 	
 	}
 	
-	// Update is called once per frame
+	/// <summary>
+    /// Update is called once per frame.
+	/// </summary>
 	void Update () 
     {
-	
 	}
+
+    /// <summary>
+    /// Called on GUI drawing.
+    /// </summary>
+    void OnGUI()
+    {
+    }
 }

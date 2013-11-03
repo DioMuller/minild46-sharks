@@ -39,18 +39,19 @@ public class SwimingBehavior : MonoBehaviour
 	/// </summary>
 	void Update () 
     {
-	    if( speed > 0f ) 
+	    if( speed > -10f ) 
         {
             speed -= (decay * Time.deltaTime);
-            position += (speed * Time.deltaTime);
         }
+         
+        position += (speed * Time.deltaTime);
+        
         
         if( waterEffect != null )
         {
-            waterEffect.GetComponent<ParticleSystem>().emissionRate = speed * 5f;
+            waterEffect.GetComponent<ParticleSystem>().emissionRate = (speed + 10f) * 5f;
         }
 
-        // TODO: Remove this from here.
         transform.position = new Vector3( position, transform.position.y, transform.position.z );
 
 	}
